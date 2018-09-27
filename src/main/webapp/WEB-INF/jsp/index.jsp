@@ -1,40 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>sitemesh</title>
+    <link rel="stylesheet" type="text/css" href="/plugin/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/plugin/themes/icon.css">
+    <script type="text/javascript" src="/plugin/jquery.min.js"></script>
+    <script type="text/javascript" src="/plugin/jquery.easyui.min.js"></script>
 </head>
-<body>
-<c:set var="num" value="100">
-</c:set>
+<body class="easyui-layout" style="overflow-y:hidden">
+<!-- Header -->
+<div data-options="region:'north',border:false" style="overflow: hidden; height: 30px; line-height: 30px;">
+        <span style="float:right; padding-right:20px;" class="head">
+        	<a href="#" id="editpass">edit</a> |
+        	<a href="#" id="loginOut">loginout</a>
+        </span>
+    <span style="padding-left:10px; font-size: 16px;">后台管理系统</span>
+</div>
 
-<c:out value="hello !@#$% 특수문자도 된데요." default="value가 null일때 사용"></c:out>
-${name }
-<h1>${num}</h1>
+<!-- 左边菜单导航  -->
+<div data-options="region:'west',title:'菜单',iconCls:'icon-tip'" style="width:220px;">
+    <div class="easyui-accordion" data-options="fit:true,border:false,animate:true,plain:true" id="menu">
+        <div title="System" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <ul class="easyui-tree">
+                <li><a href="/admin/tab">Tab</a></li>
+                <li><a href="/admin/nestedlayout">nestedlayout</a></li>
+                <li><a href="/admin/datagrid">datagrid</a></li>
+                <li>potato</li>
+                <li>lettuce</li>
+            </ul>
+        </div>
+        <div title="Help" data-options="iconCls:'icon-help'" style="padding:10px;">
+            <ul class="easyui-tree">
+                <li>tomato</li>
+                <li>carrot</li>
+                <li>cabbage</li>
+                <li>potato</li>
+                <li>lettuce</li>
+            </ul>
+        </div>
+        <div title="TreeMenu" data-options="iconCls:'icon-search'" style="padding:10px;">
+            <ul class="easyui-tree">
+                <li>
+                    <span>Foods</span>
+                    <ul>
+                        <li>
+                            <span>Fruits</span>
+                            <ul>
+                                <li>apple</li>
+                                <li>orange</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>Vegetables</span>
+                            <ul>
+                                <li>tomato</li>
+                                <li>carrot</li>
+                                <li>cabbage</li>
+                                <li>potato</li>
+                                <li>lettuce</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<c:if test = "${empty num2}">
-    <h1>num2 true</h1>
-</c:if>
-
-<c:choose>
-    <c:when test="${num != ''}">
-        <h2>${num} is true</h2>
-    </c:when>
-    <c:otherwise>
-        <h2>num is null</h2>
-    </c:otherwise>
-</c:choose>
-
-<c:forEach var="i" begin="1" end="10" step="1">
-    <p>${i}</p>
-</c:forEach>
-
-<c:forTokens var="abc" items="ccc/aaa/ccc/ddd" delims="/"></c:forTokens>
-<h3>abc => ${abc}</h3>
+<!-- 中间内容页面  -->
+<div id="mainPanle" data-options="region:'center'" style="overflow-y:hidden;padding: 5px 10px;">
+    <sitemesh:write property='body'/>
+</div>
 </body>
 </html>
-
-

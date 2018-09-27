@@ -6,8 +6,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -22,11 +20,11 @@ public class DemoTemplateJspApplication implements ApplicationRunner {
         SpringApplication.run(DemoTemplateJspApplication.class, args);
     }
 
-    @RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("name", "hello jsp");
-        return "index";
-    }
+//    @RequestMapping(value = {"/", "/index", "index.do"})
+//    public String index(Model model) {
+//        model.addAttribute("name", "hello jsp");
+//        return "index";
+//    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
